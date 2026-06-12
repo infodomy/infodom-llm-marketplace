@@ -67,6 +67,39 @@ Or update all installed plugins:
 /plugin marketplace remove infodom-llm
 ```
 
+## Codex CLI compatibility
+
+All skills in this marketplace are compatible with **OpenAI Codex CLI** as well as Claude Code. Both platforms use the same `SKILL.md` format for skills.
+
+Each plugin ships two manifests side-by-side:
+
+```
+plugins/<name>/
+  .claude-plugin/plugin.json   ← Claude Code
+  .codex-plugin/plugin.json    ← Codex CLI
+  skills/<name>/SKILL.md       ← shared by both
+```
+
+### Install in Codex CLI
+
+```shell
+codex plugin marketplace add infodomy/infodom-llm-marketplace
+codex plugin install pr-description
+```
+
+Use a skill:
+
+```shell
+/pr-description
+/infodom-db
+```
+
+Skills in Codex CLI are invoked without the plugin namespace prefix.
+
+### Version sync
+
+The release workflow keeps `.claude-plugin/plugin.json` and `.codex-plugin/plugin.json` in sync — both always have the same version number after a PR merge.
+
 ## Notes
 
 - **`save-to-docs`** — expects the `infodom-docs` repository cloned at `~/Desktop/startup/infodom/infodom-docs/`.
