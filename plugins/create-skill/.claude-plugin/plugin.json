@@ -1,5 +1,5 @@
 {
   "name": "create-skill",
   "description": "Scaffold a new plugin/skill in this marketplace with Claude Code, Codex CLI, and Cursor configs",
-  "version": "1.0.3"
+  "version": "1.0.4"
 }

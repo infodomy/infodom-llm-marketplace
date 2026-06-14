@@ -1,6 +1,6 @@
 {
   "name": "fix-grafana-dashboard",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Modify Grafana dashboards via Playwright MCP and the Grafana REST API \u2014 create, update, and reload provisioned dashboards",
   "author": "Infodom Team",
   "license": "MIT"

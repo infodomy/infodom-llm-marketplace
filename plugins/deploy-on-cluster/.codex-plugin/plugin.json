@@ -1,6 +1,6 @@
 {
   "name": "deploy-on-cluster",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Scaffold a new sre-tool deployment in the infodom-IaC gitops/sre-tools directory, or answer questions about how the gitops deployment setup works",
   "author": "Infodom Team",
   "license": "MIT"
