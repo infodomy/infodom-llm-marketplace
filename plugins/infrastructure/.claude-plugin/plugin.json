@@ -1,0 +1,5 @@
+{
+  "name": "infrastructure",
+  "description": "Infrastructure & SRE skills for the Infodom team — database, Grafana, GitOps deploys, docs, and skill scaffolding",
+  "version": "1.0.4"
+}

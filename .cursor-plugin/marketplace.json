@@ -8,116 +8,23 @@
   },
   "plugins": [
     {
-      "name": "pr-description",
-      "source": "./plugins/pr-description",
-      "description": "Create, improve, and update GitHub Pull Request descriptions for the current branch or a specified PR number",
+      "name": "infrastructure",
+      "source": "./plugins/infrastructure",
+      "description": "Infrastructure & SRE skills for the Infodom team — database, Grafana, GitOps deploys, docs, and skill scaffolding",
       "version": "1.0.4",
       "author": {
         "name": "Infodom Team"
       },
       "repository": "https://github.com/infodomy/infodom-llm-marketplace",
       "license": "MIT",
-      "category": "developer-tools",
+      "category": "infrastructure",
       "tags": [
-        "git",
-        "github",
-        "pull-request",
-        "workflow"
-      ]
-    },
-    {
-      "name": "save-to-docs",
-      "source": "./plugins/save-to-docs",
-      "description": "Save information to the infodom-docs repository and open a GitHub PR with the changes",
-      "version": "1.0.4",
-      "author": {
-        "name": "Infodom Team"
-      },
-      "repository": "https://github.com/infodomy/infodom-llm-marketplace",
-      "license": "MIT",
-      "category": "documentation",
-      "tags": [
-        "docs",
-        "github",
-        "pull-request",
-        "knowledge-base"
-      ]
-    },
-    {
-      "name": "infodom-db",
-      "source": "./plugins/infodom-db",
-      "description": "PostgreSQL/PostGIS database assistant for the Infodom production database \u2014 schema-aware SQL queries and data exploration",
-      "version": "1.0.4",
-      "author": {
-        "name": "Infodom Team"
-      },
-      "repository": "https://github.com/infodomy/infodom-llm-marketplace",
-      "license": "MIT",
-      "category": "database",
-      "tags": [
-        "postgresql",
-        "postgis",
-        "sql",
-        "infodom",
-        "database"
-      ]
-    },
-    {
-      "name": "fix-grafana-dashboard",
-      "source": "./plugins/fix-grafana-dashboard",
-      "description": "Modify Grafana dashboards via Playwright MCP and the Grafana REST API \u2014 create, update, and reload provisioned dashboards",
-      "version": "1.0.4",
-      "author": {
-        "name": "Infodom Team"
-      },
-      "repository": "https://github.com/infodomy/infodom-llm-marketplace",
-      "license": "MIT",
-      "category": "observability",
-      "tags": [
+        "infrastructure",
+        "sre",
+        "database",
         "grafana",
-        "prometheus",
-        "monitoring",
-        "sre",
-        "dashboards"
-      ]
-    },
-    {
-      "name": "create-skill",
-      "source": "./plugins/create-skill",
-      "description": "Scaffold a new plugin/skill in this marketplace with Claude Code, Codex CLI, and Cursor configs",
-      "version": "1.0.4",
-      "author": {
-        "name": "Infodom Team"
-      },
-      "repository": "https://github.com/infodomy/infodom-llm-marketplace",
-      "license": "MIT",
-      "category": "developer-tools",
-      "tags": [
-        "marketplace",
-        "scaffold",
-        "skill",
-        "plugin",
-        "meta"
-      ]
-    },
-    {
-      "name": "deploy-on-cluster",
-      "source": "./plugins/deploy-on-cluster",
-      "description": "Scaffold a new sre-tool deployment in the infodom-IaC gitops/sre-tools directory, or answer questions about how the gitops deployment setup works",
-      "version": "1.0.4",
-      "author": {
-        "name": "Infodom Team"
-      },
-      "repository": "https://github.com/infodomy/infodom-llm-marketplace",
-      "license": "MIT",
-      "category": "developer-tools",
-      "tags": [
-        "kubernetes",
-        "helm",
         "gitops",
-        "sre",
-        "tailscale",
-        "deployment"
+        "docs"
       ]
     }
   ]

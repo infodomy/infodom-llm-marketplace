@@ -4,14 +4,18 @@ Claude Code plugin marketplace for the Infodom / Locumo engineering team.
 
 ## Available skills
 
-| Plugin | Skill | Description |
+Skills are grouped under **plugins** (one plugin per team area). Installing a plugin gives you
+all of its skills.
+
+### `infrastructure`
+
+| Skill | Claude Code command | Description |
 |---|---|---|
-| `pr-description` | `/pr-description:pr-description` | Create or update GitHub PR descriptions |
-| `save-to-docs` | `/save-to-docs:save-to-docs` | Save notes to infodom-docs and open a PR |
-| `infodom-db` | `/infodom-db:infodom-db` | Schema-aware SQL assistant for the Infodom PostgreSQL database |
-| `fix-grafana-dashboard` | `/fix-grafana-dashboard:fix-grafana-dashboard` | Create and modify Grafana dashboard panels |
-| `create-skill` | `/create-skill:create-skill` | Scaffold a new marketplace plugin/skill with Claude, Codex, and Cursor configs |
-| `deploy-on-cluster` | `/deploy-on-cluster:deploy-on-cluster` | Scaffold a new sre-tool deployment in `gitops/sre-tools`, or explain how the setup works |
+| `save-to-docs` | `/infrastructure:save-to-docs` | Save notes to infodom-docs and open a PR |
+| `infodom-db` | `/infrastructure:infodom-db` | Schema-aware SQL assistant for the Infodom PostgreSQL database |
+| `fix-grafana-dashboard` | `/infrastructure:fix-grafana-dashboard` | Create and modify Grafana dashboard panels |
+| `deploy-on-cluster` | `/infrastructure:deploy-on-cluster` | Scaffold a new sre-tool deployment in `gitops/sre-tools`, or explain how the setup works |
+| `create-skill` | `/infrastructure:create-skill` | Scaffold a new grouped skill with Claude, Codex, and Cursor configs |
 
 ## Install (Claude Code)
 
@@ -24,32 +28,22 @@ Claude Code plugin marketplace for the Infodom / Locumo engineering team.
 /plugin marketplace add infodomy/infodom-llm-marketplace
 ```
 
-### 2. Install individual plugins
+### 2. Install a plugin
 
 ```shell
-/plugin install pr-description@infodom-llm
-/plugin install save-to-docs@infodom-llm
-/plugin install infodom-db@infodom-llm
-/plugin install fix-grafana-dashboard@infodom-llm
-/plugin install deploy-on-cluster@infodom-llm
-```
-
-Or install all at once:
-
-```shell
-/plugin install pr-description@infodom-llm save-to-docs@infodom-llm infodom-db@infodom-llm fix-grafana-dashboard@infodom-llm deploy-on-cluster@infodom-llm
+/plugin install infrastructure@infodom-llm
 ```
 
 ### 3. Use a skill
 
-Skills are namespaced with the plugin name:
+Skills are namespaced with the plugin (group) name:
 
 ```shell
-/pr-description:pr-description
-/save-to-docs:save-to-docs some topic to document
-/infodom-db:infodom-db
-/fix-grafana-dashboard:fix-grafana-dashboard add a panel showing request rate
-/deploy-on-cluster:deploy-on-cluster deploy uptime-kuma exposed via tailscale
+/infrastructure:save-to-docs some topic to document
+/infrastructure:infodom-db
+/infrastructure:fix-grafana-dashboard add a panel showing request rate
+/infrastructure:deploy-on-cluster deploy uptime-kuma exposed via tailscale
+/infrastructure:create-skill
 ```
 
 ## Update (Claude Code)
@@ -58,7 +52,7 @@ Pull the latest plugin versions:
 
 ```shell
 /plugin marketplace update infodom-llm
-/plugin update pr-description@infodom-llm
+/plugin update infrastructure@infodom-llm
 ```
 
 Or update all installed plugins:
@@ -70,7 +64,7 @@ Or update all installed plugins:
 ## Remove (Claude Code)
 
 ```shell
-/plugin uninstall pr-description@infodom-llm
+/plugin uninstall infrastructure@infodom-llm
 /plugin marketplace remove infodom-llm
 ```
 
@@ -81,27 +75,27 @@ All skills in this marketplace are compatible with **OpenAI Codex CLI** and **Cu
 The repo ships a marketplace manifest and per-plugin manifests for each platform, side-by-side:
 
 ```
-.claude-plugin/marketplace.json   ← Claude Code marketplace
-.cursor-plugin/marketplace.json   ← Cursor marketplace
+.claude-plugin/marketplace.json     ← Claude Code marketplace
+.cursor-plugin/marketplace.json     ← Cursor marketplace
 
-plugins/<name>/
-  .claude-plugin/plugin.json      ← Claude Code
-  .codex-plugin/plugin.json       ← Codex CLI
-  .cursor-plugin/plugin.json      ← Cursor
-  skills/<name>/SKILL.md          ← shared by all
+plugins/<group>/
+  .claude-plugin/plugin.json        ← Claude Code
+  .codex-plugin/plugin.json         ← Codex CLI
+  .cursor-plugin/plugin.json        ← Cursor
+  skills/<skill>/SKILL.md           ← one per skill, shared by all platforms
 ```
 
 ### Install in Codex CLI
 
 ```shell
 codex plugin marketplace add infodomy/infodom-llm-marketplace
-codex plugin install pr-description
+codex plugin install infrastructure
 ```
 
 Use a skill:
 
 ```shell
-/pr-description
+/save-to-docs
 /infodom-db
 ```
 
@@ -120,8 +114,8 @@ Cursor ships a built-in plugin system with **team marketplaces**. Because this r
    https://github.com/infodomy/infodom-llm-marketplace
    ```
 
-   Cursor reads `.cursor-plugin/marketplace.json` and lists all six plugins.
-4. Click **Install** on the plugins you want (e.g. `pr-description`, `infodom-db`).
+   Cursor reads `.cursor-plugin/marketplace.json` and lists the available plugins.
+4. Click **Install** on the plugins you want (e.g. `infrastructure`).
    Plugins can be installed at the user level or scoped to a specific project.
 
 > Admins can mark plugins as **required** for a distribution group, in which case they are
@@ -133,7 +127,7 @@ Skills, rules, and MCP servers bundled in a plugin become available once it is i
 Use a skill by typing its name in the Cursor chat:
 
 ```shell
-/pr-description
+/save-to-docs
 /infodom-db
 ```
 
