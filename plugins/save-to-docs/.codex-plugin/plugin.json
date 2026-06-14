@@ -1,6 +1,6 @@
 {
   "name": "save-to-docs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Save information to the infodom-docs repository and open a GitHub PR with the changes",
   "author": "Infodom Team",
   "license": "MIT"

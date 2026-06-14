@@ -1,7 +1,7 @@
 {
   "name": "infodom-llm",
   "description": "Internal LLM skills for the Infodom / Locumo engineering team",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "owner": {
     "name": "Infodom Team",
     "email": "pawel.kankowski@gmail.com"
@@ -11,7 +11,7 @@
       "name": "pr-description",
       "source": "./plugins/pr-description",
       "description": "Create, improve, and update GitHub Pull Request descriptions for the current branch or a specified PR number",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "author": {
         "name": "Infodom Team"
       },
@@ -29,7 +29,7 @@
       "name": "save-to-docs",
       "source": "./plugins/save-to-docs",
       "description": "Save information to the infodom-docs repository and open a GitHub PR with the changes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "author": {
         "name": "Infodom Team"
       },
@@ -47,7 +47,7 @@
       "name": "infodom-db",
       "source": "./plugins/infodom-db",
       "description": "PostgreSQL/PostGIS database assistant for the Infodom production database \u2014 schema-aware SQL queries and data exploration",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "author": {
         "name": "Infodom Team"
       },
@@ -66,7 +66,7 @@
       "name": "fix-grafana-dashboard",
       "source": "./plugins/fix-grafana-dashboard",
       "description": "Modify Grafana dashboards via Playwright MCP and the Grafana REST API \u2014 create, update, and reload provisioned dashboards",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "author": {
         "name": "Infodom Team"
       },
@@ -85,7 +85,7 @@
       "name": "create-skill",
       "source": "./plugins/create-skill",
       "description": "Scaffold a new plugin/skill in this marketplace with Claude Code, Codex CLI, and Cursor configs",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "author": {
         "name": "Infodom Team"
       },
@@ -104,7 +104,7 @@
       "name": "deploy-on-cluster",
       "source": "./plugins/deploy-on-cluster",
       "description": "Scaffold a new sre-tool deployment in the infodom-IaC gitops/sre-tools directory, or answer questions about how the gitops deployment setup works",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "author": {
         "name": "Infodom Team"
       },
