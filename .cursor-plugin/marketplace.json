@@ -99,6 +99,26 @@
         "plugin",
         "meta"
       ]
+    },
+    {
+      "name": "deploy-on-cluster",
+      "source": "./plugins/deploy-on-cluster",
+      "description": "Scaffold a new sre-tool deployment in the infodom-IaC gitops/sre-tools directory, or answer questions about how the gitops deployment setup works",
+      "version": "1.0.2",
+      "author": {
+        "name": "Infodom Team"
+      },
+      "repository": "https://github.com/infodomy/infodom-llm-marketplace",
+      "license": "MIT",
+      "category": "developer-tools",
+      "tags": [
+        "kubernetes",
+        "helm",
+        "gitops",
+        "sre",
+        "tailscale",
+        "deployment"
+      ]
     }
   ]
 }
