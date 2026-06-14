@@ -13,7 +13,10 @@ Claude Code plugin marketplace for the Infodom / Locumo engineering team.
 | `create-skill` | `/create-skill:create-skill` | Scaffold a new marketplace plugin/skill with Claude, Codex, and Cursor configs |
 | `deploy-on-cluster` | `/deploy-on-cluster:deploy-on-cluster` | Scaffold a new sre-tool deployment in `gitops/sre-tools`, or explain how the setup works |
 
-## Install
+## Install (Claude Code)
+
+> This section covers **Claude Code**. The `/plugin` commands below are Claude Code commands.
+> For other editors, see [Codex CLI & Cursor compatibility](#codex-cli--cursor-compatibility) below.
 
 ### 1. Add the marketplace
 
@@ -49,7 +52,7 @@ Skills are namespaced with the plugin name:
 /deploy-on-cluster:deploy-on-cluster deploy uptime-kuma exposed via tailscale
 ```
 
-## Update
+## Update (Claude Code)
 
 Pull the latest plugin versions:
 
@@ -64,7 +67,7 @@ Or update all installed plugins:
 /plugin update
 ```
 
-## Remove
+## Remove (Claude Code)
 
 ```shell
 /plugin uninstall pr-description@infodom-llm
