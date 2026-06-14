@@ -10,6 +10,7 @@ Claude Code plugin marketplace for the Infodom / Locumo engineering team.
 | `save-to-docs` | `/save-to-docs:save-to-docs` | Save notes to infodom-docs and open a PR |
 | `infodom-db` | `/infodom-db:infodom-db` | Schema-aware SQL assistant for the Infodom PostgreSQL database |
 | `fix-grafana-dashboard` | `/fix-grafana-dashboard:fix-grafana-dashboard` | Create and modify Grafana dashboard panels |
+| `create-skill` | `/create-skill:create-skill` | Scaffold a new marketplace plugin/skill with Claude, Codex, and Cursor configs |
 
 ## Install
 

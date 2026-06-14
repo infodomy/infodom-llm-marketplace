@@ -84,6 +84,25 @@
         "sre",
         "dashboards"
       ]
+    },
+    {
+      "name": "create-skill",
+      "source": "./plugins/create-skill",
+      "description": "Scaffold a new plugin/skill in this marketplace with Claude Code, Codex CLI, and Cursor configs",
+      "version": "1.0.1",
+      "author": {
+        "name": "Infodom Team"
+      },
+      "repository": "https://github.com/infodomy/infodom-llm-marketplace",
+      "license": "MIT",
+      "category": "developer-tools",
+      "tags": [
+        "marketplace",
+        "scaffold",
+        "skill",
+        "plugin",
+        "meta"
+      ]
     }
   ]
 }
