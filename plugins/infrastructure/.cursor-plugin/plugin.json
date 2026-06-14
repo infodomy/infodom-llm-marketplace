@@ -1,0 +1,7 @@
+{
+  "name": "infrastructure",
+  "version": "1.0.4",
+  "description": "Infrastructure & SRE skills for the Infodom team — database, Grafana, GitOps deploys, docs, and skill scaffolding",
+  "author": "Infodom Team",
+  "license": "MIT"
+}
