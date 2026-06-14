@@ -1,0 +1,5 @@
+{
+  "name": "deploy-on-cluster",
+  "description": "Scaffold a new sre-tool deployment in the infodom-IaC gitops/sre-tools directory, or answer questions about how the gitops deployment setup works",
+  "version": "1.0.2"
+}

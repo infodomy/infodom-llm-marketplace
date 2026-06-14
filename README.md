@@ -11,6 +11,7 @@ Claude Code plugin marketplace for the Infodom / Locumo engineering team.
 | `infodom-db` | `/infodom-db:infodom-db` | Schema-aware SQL assistant for the Infodom PostgreSQL database |
 | `fix-grafana-dashboard` | `/fix-grafana-dashboard:fix-grafana-dashboard` | Create and modify Grafana dashboard panels |
 | `create-skill` | `/create-skill:create-skill` | Scaffold a new marketplace plugin/skill with Claude, Codex, and Cursor configs |
+| `deploy-on-cluster` | `/deploy-on-cluster:deploy-on-cluster` | Scaffold a new sre-tool deployment in `gitops/sre-tools`, or explain how the setup works |
 
 ## Install
 
@@ -27,12 +28,13 @@ Claude Code plugin marketplace for the Infodom / Locumo engineering team.
 /plugin install save-to-docs@infodom-llm
 /plugin install infodom-db@infodom-llm
 /plugin install fix-grafana-dashboard@infodom-llm
+/plugin install deploy-on-cluster@infodom-llm
 ```
 
 Or install all at once:
 
 ```shell
-/plugin install pr-description@infodom-llm save-to-docs@infodom-llm infodom-db@infodom-llm fix-grafana-dashboard@infodom-llm
+/plugin install pr-description@infodom-llm save-to-docs@infodom-llm infodom-db@infodom-llm fix-grafana-dashboard@infodom-llm deploy-on-cluster@infodom-llm
 ```
 
 ### 3. Use a skill
@@ -44,6 +46,7 @@ Skills are namespaced with the plugin name:
 /save-to-docs:save-to-docs some topic to document
 /infodom-db:infodom-db
 /fix-grafana-dashboard:fix-grafana-dashboard add a panel showing request rate
+/deploy-on-cluster:deploy-on-cluster deploy uptime-kuma exposed via tailscale
 ```
 
 ## Update
@@ -114,7 +117,7 @@ Cursor ships a built-in plugin system with **team marketplaces**. Because this r
    https://github.com/infodomy/infodom-llm-marketplace
    ```
 
-   Cursor reads `.cursor-plugin/marketplace.json` and lists all four plugins.
+   Cursor reads `.cursor-plugin/marketplace.json` and lists all six plugins.
 4. Click **Install** on the plugins you want (e.g. `pr-description`, `infodom-db`).
    Plugins can be installed at the user level or scoped to a specific project.
 
@@ -144,6 +147,7 @@ PR merge.
 - **`save-to-docs`** — expects the `infodom-docs` repository cloned at `~/Desktop/startup/infodom/infodom-docs/`.
 - **`fix-grafana-dashboard`** — requires Playwright MCP and access to `sre-tools/grafana/`; best used from the `infodom-IaC` repo.
 - **`infodom-db`** — schema reference files are bundled with the plugin. When working in `infodom-IaC`, the skill also reads from `.claude/skills/infodom-db/schema/`.
+- **`deploy-on-cluster`** — expects the `infodom-IaC` repository cloned at `~/Desktop/startup/infodom/infodom-IaC/`; scaffolds tools into `gitops/sre-tools/` and follows the existing `deploy.sh` + Helm wrapper-chart conventions. Scaffolds files only — it does not commit, push, or run helm.
 
 ## Versioning
 
