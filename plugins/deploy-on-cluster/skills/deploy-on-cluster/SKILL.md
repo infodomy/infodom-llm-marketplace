@@ -61,9 +61,14 @@ Use the reference files from Step 1 to explain how things work. Common topics:
   config; values for the subchart are nested under the dependency name/alias.
 - **Secrets.** Encrypted with SOPS via the `helm-secrets` plugin, committed as
   `secrets-encrypted.yaml`. Plain secret files are never committed.
-- **Exposure.** Internal-only tools use a Traefik `IngressRoute`; company-wide access uses a
-  **Tailscale** ingress (`ingressClassName: tailscale`) reachable at
-  `https://<hostname>.baiji-wall.ts.net`.
+- **Exposure.** Two very different paths:
+  - **Tailscale** is our **VPN**. Use it when the page should be accessible **only to us**
+    (the team). It creates a Tailscale ingress (`ingressClassName: tailscale`) reachable at
+    `https://<hostname>.baiji-wall.ts.net` — no public DNS, no Cloudflare.
+  - **Traefik** is how we expose services to the **public internet**. A Traefik `IngressRoute`
+    is **not enough on its own**: a public deployment also needs the correct Traefik endpoint
+    **and** Cloudflare DNS records. Cloudflare is managed via Terraform in
+    `terraform/cloudflare/` (`dns.tf`). See the warning in Step 4 before going public.
 - **deploy.sh.** A thin wrapper that runs `helm dependency build/update` then
   `helm secrets upgrade ... --create-namespace -n "$NAMESPACE"`.
 
@@ -89,12 +94,28 @@ Use the **AskUserQuestion** tool to collect everything needed. Ask in focused ba
 5. **Persistence** — does it need a PVC? If yes, size and storage class
    (the cluster uses `longhorn`).
 6. **Exposure** — use AskUserQuestion with these options:
-   - **Tailscale** — accessible to the rest of the company at
+   - **Tailscale (VPN — only accessible to us)** — our VPN. Use this when the page should be
+     reachable **only by the team**, with no public exposure. Reachable at
      `https://<hostname>.baiji-wall.ts.net`. Ask for the desired **hostname** and the
      **service port**.
-   - **Traefik IngressRoute** — internal cluster routing. Ask for the **host** and
-     **entryPoint**.
+   - **Traefik (public internet)** — exposes the service to the **public network**. Ask for
+     the **host** and **entryPoint**. ⚠️ This path is more involved — see the warning below.
    - **None** — ClusterIP only, access via `kubectl port-forward`.
+
+   **⚠️ If the user picks Traefik / public exposure, you MUST tell them:**
+
+   > Exposing a service publicly via Traefik is not just an IngressRoute. You will also need to:
+   > 1. Configure the correct Traefik **endpoint / entryPoint** for the service.
+   > 2. Add the matching **Cloudflare DNS records** so the public hostname resolves. Cloudflare
+   >    is controlled through Terraform in `terraform/cloudflare/` (`dns.tf`) — the records are
+   >    applied from there, not from the Helm chart.
+   >
+   > **Strong recommendation:** public exposure and DNS changes are easy to get wrong and can
+   > affect other services. The **best recommendation is to contact Paweł Kankowski (SRE-Lead)**
+   > for help with the Traefik endpoint and Cloudflare DNS changes before going live.
+
+   Scaffold the `IngressRoute` template as usual, but make clear the deployment is **not
+   publicly reachable** until the endpoint + Cloudflare DNS work is done (ideally with Paweł).
 7. **Secrets** — does it need any secrets (DB password, API token, etc.)? If yes, note the
    keys; the user will encrypt them later with `helm secrets encrypt`.
 
@@ -280,5 +301,9 @@ Then summarize for the user:
   only via `helm secrets encrypt`, run by the user.
 - **Scaffold only** — do not commit, push, open a PR, or run helm against the cluster unless
   the user explicitly asks.
-- **Company-wide exposure = Tailscale** (`https://<hostname>.baiji-wall.ts.net`);
-  internal routing = Traefik IngressRoute; otherwise ClusterIP + port-forward.
+- **Tailscale = our VPN** — use it when the page should be accessible **only to us**
+  (`https://<hostname>.baiji-wall.ts.net`); no public DNS involved.
+- **Traefik = public internet exposure** — also requires the correct Traefik endpoint **and**
+  Cloudflare DNS records (managed in `terraform/cloudflare/`). **Always warn the user** and give
+  the **best recommendation to contact Paweł Kankowski (SRE-Lead)** before exposing publicly.
+- Otherwise ClusterIP + `kubectl port-forward`.
