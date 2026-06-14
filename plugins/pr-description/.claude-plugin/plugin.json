@@ -1,5 +1,5 @@
 {
   "name": "pr-description",
   "description": "Create, improve, and update GitHub Pull Request descriptions for the current branch or a specified PR number",
-  "version": "1.0.0"
+  "version": "1.0.1"
 }

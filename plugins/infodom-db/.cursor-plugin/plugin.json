@@ -1,7 +1,7 @@
 {
   "name": "infodom-db",
-  "version": "1.0.0",
-  "description": "PostgreSQL/PostGIS database assistant for the Infodom production database — schema-aware SQL queries and data exploration",
+  "version": "1.0.1",
+  "description": "PostgreSQL/PostGIS database assistant for the Infodom production database \u2014 schema-aware SQL queries and data exploration",
   "author": "Infodom Team",
   "license": "MIT"
 }
