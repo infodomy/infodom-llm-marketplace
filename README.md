@@ -12,7 +12,10 @@ Claude Code plugin marketplace for the Infodom / Locumo engineering team.
 | `fix-grafana-dashboard` | `/fix-grafana-dashboard:fix-grafana-dashboard` | Create and modify Grafana dashboard panels |
 | `create-skill` | `/create-skill:create-skill` | Scaffold a new marketplace plugin/skill with Claude, Codex, and Cursor configs |
 
-## Install
+## Install (Claude Code)
+
+> This section covers **Claude Code**. The `/plugin` commands below are Claude Code commands.
+> For other editors, see [Codex CLI & Cursor compatibility](#codex-cli--cursor-compatibility) below.
 
 ### 1. Add the marketplace
 
@@ -46,7 +49,7 @@ Skills are namespaced with the plugin name:
 /fix-grafana-dashboard:fix-grafana-dashboard add a panel showing request rate
 ```
 
-## Update
+## Update (Claude Code)
 
 Pull the latest plugin versions:
 
@@ -61,7 +64,7 @@ Or update all installed plugins:
 /plugin update
 ```
 
-## Remove
+## Remove (Claude Code)
 
 ```shell
 /plugin uninstall pr-description@infodom-llm
