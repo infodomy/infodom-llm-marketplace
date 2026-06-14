@@ -2,7 +2,7 @@
   "$schema": "https://claude.ai/schemas/marketplace.json",
   "name": "infodom-llm",
   "description": "Internal LLM skills for the Infodom / Locumo engineering team",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "owner": {
     "name": "Infodom Team",
     "email": "pawel.kankowski@gmail.com"
@@ -14,8 +14,8 @@
     {
       "name": "infrastructure",
       "source": "./plugins/infrastructure",
-      "description": "Infrastructure & SRE skills for the Infodom team — database, Grafana, GitOps deploys, docs, and skill scaffolding",
-      "version": "1.0.4",
+      "description": "Infrastructure & SRE skills for the Infodom team \u2014 database, Grafana, GitOps deploys, docs, and skill scaffolding",
+      "version": "1.0.5",
       "author": {
         "name": "Infodom Team"
       },
