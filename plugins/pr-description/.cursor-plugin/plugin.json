@@ -1,0 +1,7 @@
+{
+  "name": "pr-description",
+  "version": "1.0.0",
+  "description": "Create, improve, and update GitHub Pull Request descriptions for the current branch or a specified PR number",
+  "author": "Infodom Team",
+  "license": "MIT"
+}
