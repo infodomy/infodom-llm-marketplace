@@ -30,6 +30,24 @@
         "gitops",
         "docs"
       ]
+    },
+    {
+      "name": "backend",
+      "source": "./plugins/backend",
+      "description": "Backend development skills for the Infodom team — PR descriptions, Django/DRF API workflows",
+      "version": "1.0.5",
+      "author": {
+        "name": "Infodom Team"
+      },
+      "repository": "https://github.com/infodomy/infodom-llm-marketplace",
+      "license": "MIT",
+      "category": "backend",
+      "tags": [
+        "backend",
+        "django",
+        "api",
+        "pr"
+      ]
     }
   ]
 }
