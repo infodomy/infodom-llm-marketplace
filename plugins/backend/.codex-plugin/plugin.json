@@ -1,0 +1,7 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend development skills for the Infodom team — PR descriptions, Django/DRF API workflows",
+  "author": "Infodom Team",
+  "license": "MIT"
+}
