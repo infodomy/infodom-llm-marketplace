@@ -31,7 +31,7 @@
       "name": "backend",
       "source": "./plugins/backend",
       "description": "Backend development skills for the Infodom team — PR descriptions, Django/DRF API workflows",
-      "version": "1.0.5",
+      "version": "1.0.0",
       "author": {
         "name": "Infodom Team"
       },
