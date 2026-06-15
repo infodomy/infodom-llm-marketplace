@@ -22,6 +22,7 @@ all of its skills.
 | Skill | Claude Code command | Description |
 |---|---|---|
 | `pr-description` | `/backend:pr-description` | Create, improve, and update GitHub PR descriptions |
+| `infodom-backend` | `/backend:infodom-backend` | Guide backend development in the Locumo Django REST API |
 
 ## Install (Claude Code)
 
@@ -52,6 +53,7 @@ Skills are namespaced with the plugin (group) name:
 /infrastructure:deploy-on-cluster deploy uptime-kuma exposed via tailscale
 /infrastructure:create-skill
 /backend:pr-description
+/backend:infodom-backend
 ```
 
 ## Update (Claude Code)
@@ -107,6 +109,7 @@ Use a skill:
 /save-to-docs
 /infodom-db
 /pr-description
+/infodom-backend
 ```
 
 Skills in Codex CLI are invoked without the plugin namespace prefix.
@@ -140,6 +143,7 @@ Use a skill by typing its name in the Cursor chat:
 /save-to-docs
 /infodom-db
 /pr-description
+/infodom-backend
 ```
 
 Like Codex, Cursor invokes skills without the plugin namespace prefix.
@@ -156,6 +160,7 @@ PR merge.
 - **`fix-grafana-dashboard`** — requires Playwright MCP and access to `sre-tools/grafana/`; best used from the `infodom-IaC` repo.
 - **`infodom-db`** — schema reference files are bundled with the plugin. When working in `infodom-IaC`, the skill also reads from `.claude/skills/infodom-db/schema/`.
 - **`deploy-on-cluster`** — expects the `infodom-IaC` repository cloned at `~/Desktop/startup/infodom/infodom-IaC/`; scaffolds tools into `gitops/sre-tools/` and follows the existing `deploy.sh` + Helm wrapper-chart conventions. Scaffolds files only — it does not commit, push, or run helm.
+- **`infodom-backend`** — development guide reference is bundled with the plugin. When working in `infodom-backend`, the skill also reads from `AGENTS.md` at the repo root.
 
 ## Versioning
 
