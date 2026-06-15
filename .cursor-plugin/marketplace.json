@@ -1,7 +1,7 @@
 {
   "name": "infodom-llm",
   "description": "Internal LLM skills for the Infodom / Locumo engineering team",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "owner": {
     "name": "Infodom Team",
     "email": "pawel.kankowski@gmail.com"
@@ -11,7 +11,7 @@
       "name": "infrastructure",
       "source": "./plugins/infrastructure",
       "description": "Infrastructure & SRE skills for the Infodom team \u2014 database, Grafana, GitOps deploys, docs, and skill scaffolding",
-      "version": "1.0.5",
+      "version": "1.0.6",
       "author": {
         "name": "Infodom Team"
       },
@@ -30,8 +30,8 @@
     {
       "name": "backend",
       "source": "./plugins/backend",
-      "description": "Backend development skills for the Infodom team — PR descriptions, Django/DRF API workflows",
-      "version": "1.0.0",
+      "description": "Backend development skills for the Infodom team \u2014 PR descriptions, Django/DRF API workflows",
+      "version": "1.0.1",
       "author": {
         "name": "Infodom Team"
       },
