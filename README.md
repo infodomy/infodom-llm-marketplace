@@ -9,20 +9,26 @@ all of its skills.
 
 ### `infrastructure`
 
-| Skill | Claude Code command | Description |
-|---|---|---|
-| `save-to-docs` | `/infrastructure:save-to-docs` | Save notes to infodom-docs and open a PR |
-| `infodom-db` | `/infrastructure:infodom-db` | Schema-aware SQL assistant for the Infodom PostgreSQL database |
-| `fix-grafana-dashboard` | `/infrastructure:fix-grafana-dashboard` | Create and modify Grafana dashboard panels |
-| `deploy-on-cluster` | `/infrastructure:deploy-on-cluster` | Scaffold a new sre-tool deployment in `gitops/sre-tools`, or explain how the setup works |
-| `create-skill` | `/infrastructure:create-skill` | Scaffold a new grouped skill with Claude, Codex, and Cursor configs |
+| Skill                   | Claude Code command                     | Description                                                                              |
+| ----------------------- | --------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `save-to-docs`          | `/infrastructure:save-to-docs`          | Save notes to infodom-docs and open a PR                                                 |
+| `infodom-db`            | `/infrastructure:infodom-db`            | Schema-aware SQL assistant for the Infodom PostgreSQL database                           |
+| `fix-grafana-dashboard` | `/infrastructure:fix-grafana-dashboard` | Create and modify Grafana dashboard panels                                               |
+| `deploy-on-cluster`     | `/infrastructure:deploy-on-cluster`     | Scaffold a new sre-tool deployment in `gitops/sre-tools`, or explain how the setup works |
+| `create-skill`          | `/infrastructure:create-skill`          | Scaffold a new grouped skill with Claude, Codex, and Cursor configs                      |
 
 ### `backend`
 
-| Skill | Claude Code command | Description |
-|---|---|---|
-| `pr-description` | `/backend:pr-description` | Create, improve, and update GitHub PR descriptions |
+| Skill             | Claude Code command        | Description                                             |
+| ----------------- | -------------------------- | ------------------------------------------------------- |
+| `pr-description`  | `/backend:pr-description`  | Create, improve, and update GitHub PR descriptions      |
 | `infodom-backend` | `/backend:infodom-backend` | Guide backend development in the Locumo Django REST API |
+
+### `frontend`
+
+| Skill              | Claude Code command          | Description                                             |
+| ------------------ | ---------------------------- | ------------------------------------------------------- |
+| `infodom-frontend` | `/frontend:infodom-frontend` | Guide frontend development in the Locumo React monorepo |
 
 ## Install (Claude Code)
 
@@ -40,6 +46,7 @@ all of its skills.
 ```shell
 /plugin install infrastructure@infodom-llm
 /plugin install backend@infodom-llm
+/plugin install frontend@infodom-llm
 ```
 
 ### 3. Use a skill
@@ -54,6 +61,7 @@ Skills are namespaced with the plugin (group) name:
 /infrastructure:create-skill
 /backend:pr-description
 /backend:infodom-backend
+/frontend:infodom-frontend
 ```
 
 ## Update (Claude Code)
@@ -101,6 +109,7 @@ plugins/<group>/
 codex plugin marketplace add infodomy/infodom-llm-marketplace
 codex plugin install infrastructure
 codex plugin install backend
+codex plugin install frontend
 ```
 
 Use a skill:
@@ -110,6 +119,7 @@ Use a skill:
 /infodom-db
 /pr-description
 /infodom-backend
+/infodom-frontend
 ```
 
 Skills in Codex CLI are invoked without the plugin namespace prefix.
@@ -128,7 +138,8 @@ Cursor ships a built-in plugin system with **team marketplaces**. Because this r
    ```
 
    Cursor reads `.cursor-plugin/marketplace.json` and lists the available plugins.
-4. Click **Install** on the plugins you want (e.g. `infrastructure`, `backend`).
+
+4. Click **Install** on the plugins you want (e.g. `infrastructure`, `backend`, `frontend`).
    Plugins can be installed at the user level or scoped to a specific project.
 
 > Admins can mark plugins as **required** for a distribution group, in which case they are
@@ -144,6 +155,7 @@ Use a skill by typing its name in the Cursor chat:
 /infodom-db
 /pr-description
 /infodom-backend
+/infodom-frontend
 ```
 
 Like Codex, Cursor invokes skills without the plugin namespace prefix.
@@ -161,6 +173,7 @@ PR merge.
 - **`infodom-db`** — schema reference files are bundled with the plugin. When working in `infodom-IaC`, the skill also reads from `.claude/skills/infodom-db/schema/`.
 - **`deploy-on-cluster`** — expects the `infodom-IaC` repository cloned at `~/Desktop/startup/infodom/infodom-IaC/`; scaffolds tools into `gitops/sre-tools/` and follows the existing `deploy.sh` + Helm wrapper-chart conventions. Scaffolds files only — it does not commit, push, or run helm.
 - **`infodom-backend`** — development guide reference is bundled with the plugin. When working in `infodom-backend`, the skill also reads from `AGENTS.md` at the repo root.
+- **`infodom-frontend`** — development guide reference is bundled with the plugin. When working in `infodom-frontend`, the skill also reads from `AGENTS.md` at the repo root.
 
 ## Versioning
 

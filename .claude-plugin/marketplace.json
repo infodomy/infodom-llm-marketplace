@@ -48,6 +48,25 @@
         "api",
         "pr"
       ]
+    },
+    {
+      "name": "frontend",
+      "source": "./plugins/frontend",
+      "description": "Frontend development skills for the Infodom team — React/TypeScript monorepo conventions, design system, and UI workflows",
+      "version": "1.0.6",
+      "author": {
+        "name": "Infodom Team"
+      },
+      "repository": "https://github.com/infodomy/infodom-llm-marketplace",
+      "license": "MIT",
+      "category": "frontend",
+      "tags": [
+        "frontend",
+        "react",
+        "typescript",
+        "scss",
+        "ui"
+      ]
     }
   ]
 }
