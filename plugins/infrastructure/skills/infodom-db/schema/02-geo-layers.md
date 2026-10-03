@@ -1,6 +1,6 @@
 # Infodom DB — Geospatial Layer Tables
 
-These are the "entity" tables that hold the actual geospatial data. They are linked to addresses through the match tables (`address_info_address*match`). See `03-match-tables.md` for the match table schemas.
+These are the "entity" tables that hold the actual geospatial data (all geometry columns are SRID 4326). There are no pre-computed address↔layer match tables any more (dropped in backend 1.8.0, migration `address_info.0046`) — proximity is computed on the fly. See `03-proximity-queries.md` for the radii and query pattern.
 
 ## `address_info_amenity` — 397 K rows
 Points of interest from OpenStreetMap.
@@ -201,11 +201,14 @@ M2M to estates: `address_info_stinkarea_estates`
 
 ```sql
 -- Find all amenities within 500m of an address point
+-- (degree prefilter on raw geometry uses the GIST index; exact metre cutoff after — see 03-proximity-queries.md)
 SELECT a.category, a.subcategory, a.details,
-       ST_Distance(a.location::geography, addr.address_point::geography) AS distance_m
+       ST_DistanceSphere(a.location, addr.address_point) AS distance_m
 FROM address_info_amenity a, address_info_address addr
 WHERE addr.full_address = 'ul. Przykładowa 1, 50-000 Wrocław'
-  AND ST_DWithin(a.location::geography, addr.address_point::geography, 500)
+  AND ST_DWithin(a.location, addr.address_point,
+                 GREATEST(0.5/111.0, 0.5/(111.0*GREATEST(ABS(COS(RADIANS(ST_Y(addr.address_point)))),0.01))))
+  AND ST_DistanceSphere(a.location, addr.address_point) <= 500
 ORDER BY distance_m;
 
 -- Check if an address falls inside a flood zone
