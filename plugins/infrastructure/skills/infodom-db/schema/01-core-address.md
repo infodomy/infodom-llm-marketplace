@@ -1,6 +1,6 @@
 # Infodom DB — Core Address Tables
 
-## `address_info_address` — ~7.97 M rows
+## `address_info_address` — ~8.57 M rows (5.7 GB, dev 2026-10)
 Central entity. The `full_address` column is the natural unique key.
 
 | Column | Type | Nullable | Notes |
@@ -21,13 +21,8 @@ Central entity. The `full_address` column is the natural unique key.
 | `pm_2_5_sensor_id` | uuid FK → `address_info_airquality` | YES | nearest PM2.5 sensor |
 | `stink_area_id` | uuid FK → `address_info_stinkarea` | YES | |
 
-## `address_info_addressmatching` — ~7.96 M rows
-One-to-one hub. Each address gets exactly one matching record; all 11 proximity match tables link through here.
-
-| Column | Type | Notes |
-|---|---|---|
-| `id` | uuid PK | |
-| `address_id` | uuid FK UNIQUE → `address_info_address` | |
+> `address_info_addressmatching` (the old 1:1 hub for match tables) was dropped in backend 1.8.0
+> (migration `address_info.0046`). Proximity is computed on the fly — see `03-proximity-queries.md`.
 
 ## `address_info_district` — 35 rows
 Administrative district polygons (e.g. Wrocław districts).
@@ -50,7 +45,7 @@ Sub-district neighbourhood polygons.
 | `name` | varchar(255) UNIQUE | NO |
 | `polygons` | geometry | NO |
 
-## `address_info_plot` — 37.7 M rows
+## `address_info_plot` — 37.7 M rows (16 GB — largest table)
 Land registry (EGIB cadastre) plots. PK is the cadastre string identifier (not a UUID).  
 Linked to `address_info_buildpermit` via `buildpermit.plot_id_id → plot.id`.
 
@@ -102,8 +97,7 @@ SELECT a.* FROM address_info_address a
 JOIN address_info_district d ON a.district_id = d.id
 WHERE d.name = 'Śródmieście';
 
--- Get the addressmatching hub id for a given address (needed to query match tables)
-SELECT am.id AS matching_id
-FROM address_info_addressmatching am
-WHERE am.address_id = '<address_uuid>';
+-- Address point (lon/lat, SRID 4326) — the anchor for proximity queries (see 03-proximity-queries.md)
+SELECT id, ST_X(address_point) AS lon, ST_Y(address_point) AS lat
+FROM address_info_address WHERE id = '<address_uuid>';
 ```
